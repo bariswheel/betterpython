@@ -17,12 +17,14 @@ class SupportTicket:
         self.issue = issue
 
 
+# My SharingStrategy equivalent 
 class TicketOrderingStrategy(ABC):
     @abstractmethod
     def create_ordering(self, list: List[SupportTicket]) -> List[SupportTicket]:
         pass
 
 
+# InternalShareStrategy equivalent 
 class FIFOOrderingStrategy(TicketOrderingStrategy):
     def create_ordering(self, list: List[SupportTicket]) -> List[SupportTicket]:
         return list.copy()
@@ -47,6 +49,7 @@ class BlackHoleStrategy(TicketOrderingStrategy):
         return []
 
 
+# Share class equivalent, this is the context class below. 
 class CustomerSupport:
 
     def __init__(self, processing_strategy: TicketOrderingStrategy):
